@@ -27,6 +27,6 @@ Dashboards and business reporting projects focused on performance analysis and i
 Visualization projects built with tools such as Tableau or Looker Studio.
 
 ## Contact
--phone number: +34 673119678
+- Phone number: +34 673119678
 - LinkedIn: www.linkedin.com/in/juan-antonio-sánchez-salvador-11107251
 - Location: Málaga, Spain

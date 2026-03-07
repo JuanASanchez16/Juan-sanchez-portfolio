@@ -85,16 +85,7 @@ Estimation of the expected revenue loss associated with cancellations using hist
 - After adjusting for capacity, the portfolio shows a competitive market positioning in pricing terms.
 - Future occupancy and cancellation behavior can be used as valuable inputs for revenue and operational decision-making.
 
-## Repository structure
-
-```text
-malaga-tourist-rental-market-analysis/
-├── notebook.ipynb
-├── README.md
-├── data-not-included.txt
-└── images/
-
-## Confidentiality note
+### Confidentiality note
 
 The original CSV files are not published in this repository because they contain confidential or restricted-use data.
 
@@ -112,3 +103,13 @@ and business-oriented interpretation of results.
 
 **Juan Sanchez**
 Business Analytics | Revenue | Operations | BI
+
+## Repository structure
+
+```text
+malaga-tourist-rental-market-analysis/
+├── notebook.ipynb
+├── README.md
+├── data-not-included.txt
+└── images/
+

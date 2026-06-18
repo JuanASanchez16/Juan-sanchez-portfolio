@@ -1,0 +1,8 @@
+ticker,asset_name,selected_order,aic,bic,selection_method,n_train_observations
+BTC-USD,Bitcoin,"(2, 0, 0)",-6662.1272659610095,-6645.59926016296,auto_arima_train_aic,1825
+SPY,S&P 500 ETF,"(2, 0, 0)",-7271.17501074919,-7255.763175437409,auto_arima_train_aic,1258
+QQQ,Nasdaq 100 ETF,"(1, 0, 0)",-6775.187445293993,-6764.912888419472,auto_arima_train_aic,1258
+AAPL,Apple,"(1, 0, 0)",-6147.75185802827,-6132.340022716489,auto_arima_train_aic,1258
+PG,Procter & Gamble,"(1, 0, 0)",-7225.110232067859,-7209.698396756078,auto_arima_train_aic,1258
+GLD,Gold ETF,"(0, 0, 0)",-8264.591173630155,-8259.453895192895,auto_arima_train_aic,1258
+EURUSD=X,EUR/USD,"(0, 0, 1)",-10363.803704222719,-10353.45885506847,auto_arima_train_aic,1303

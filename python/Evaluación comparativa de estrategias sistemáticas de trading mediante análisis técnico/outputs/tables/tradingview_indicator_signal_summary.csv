@@ -1,0 +1,4 @@
+case_name,strong_entries,moderate_entries,against_regime_entries,atr_stop_exits,trailing_atr_exits,ema_cross_exits,rsi_loss_exits,total_entries,total_exits
+BTC 4H,9,11,10,3,19,0,8,30,30
+SPY 1D,17,5,0,2,11,0,9,22,22
+PG 1D,5,9,3,0,8,3,5,17,16

@@ -1,0 +1,8 @@
+ticker,asset_name,best_sharpe_strategy,best_sharpe,best_return_strategy,best_total_return,best_drawdown_strategy,best_max_drawdown
+BTC-USD,Bitcoin,ARIMA Long/Cash,1.0117,Buy and Hold,2.7902,EMA Long/Cash,-0.2761
+SPY,S&P 500 ETF,ARIMA Long/Cash,1.6781,Buy and Hold,1.0362,ARIMA Long/Cash,-0.0888
+QQQ,Nasdaq 100 ETF,Buy and Hold,1.7604,Buy and Hold,1.8304,EMA Long/Cash,-0.1619
+AAPL,Apple,Buy and Hold,1.0932,Buy and Hold,1.3264,EMA Long/Cash,-0.2142
+PG,Procter & Gamble,ARIMA Long/Cash,0.2124,ARIMA Long/Cash,0.0917,ARIMA Long/Cash,-0.1176
+GLD,Gold ETF,Buy and Hold,1.3642,Buy and Hold,1.2857,ARIMA Long/Cash,-0.2446
+EURUSD=X,EUR/USD,Buy and Hold,0.2951,Buy and Hold,0.0756,EMA Long/Cash,-0.0629

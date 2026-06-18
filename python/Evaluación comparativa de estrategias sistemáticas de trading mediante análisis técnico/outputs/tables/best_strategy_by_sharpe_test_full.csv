@@ -1,0 +1,8 @@
+strategy,period,ticker,asset_name,final_equity,total_return,annualized_return,annualized_volatility,sharpe_ratio,max_drawdown,n_observations
+Buy and Hold,Test,AAPL,Apple,233.2547,1.3325,0.2778,0.2532,1.097,-0.3336,868
+ARIMA Long/Cash,Test,BTC-USD,Bitcoin,327.8353,2.2784,0.4093,0.4046,1.0117,-0.3317,1265
+Buy and Hold,Test,EURUSD=X,EUR/USD,107.5341,0.0753,0.0212,0.072,0.2945,-0.0884,900
+Buy and Hold,Test,GLD,Gold ETF,228.2009,1.282,0.2697,0.1981,1.3612,-0.2446,868
+ARIMA Long/Cash,Test,PG,Procter & Gamble,109.1679,0.0917,0.0257,0.121,0.2124,-0.1176,868
+Buy and Hold,Test,QQQ,Nasdaq 100 ETF,283.5076,1.8351,0.352,0.1996,1.7632,-0.2277,868
+ARIMA Long/Cash,Test,SPY,S&P 500 ETF,180.6383,0.8064,0.1867,0.1112,1.679,-0.0888,868

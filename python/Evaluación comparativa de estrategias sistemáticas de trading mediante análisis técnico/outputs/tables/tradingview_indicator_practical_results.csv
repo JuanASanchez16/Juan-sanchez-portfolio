@@ -1,0 +1,4 @@
+case_name,ticker,timeframe,initial_capital,final_capital_indicator,strong_entries,moderate_entries,against_regime_entries,atr_stop_exits,trailing_atr_exits,ema_cross_exits,rsi_loss_exits,total_entries,total_exits,indicator_total_return,strong_entry_pct,moderate_entry_pct,against_regime_entry_pct
+BTC 4H,BTC-USD,4H,10000,,9,11,10,3,19,0,8,30,30,,0.3,0.36666666666666664,0.3333333333333333
+SPY 1D,SPY,1D,10000,,17,5,0,2,11,0,9,22,22,,0.7727272727272727,0.22727272727272727,0.0
+PG 1D,PG,1D,10000,,5,9,3,0,8,3,5,17,16,,0.29411764705882354,0.5294117647058824,0.17647058823529413

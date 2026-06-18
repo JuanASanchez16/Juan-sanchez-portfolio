@@ -1,0 +1,4 @@
+strategy,best_sharpe_count,best_return_count,best_drawdown_count
+Buy and Hold,4,6,0
+EMA Long/Cash,0,0,4
+ARIMA Long/Cash,3,1,3

@@ -1,0 +1,42 @@
+ticker,asset_name,regime_type,regime,n_observations
+BTC-USD,Bitcoin,Tendencia,Alcista,811
+BTC-USD,Bitcoin,Tendencia,Bajista,231
+BTC-USD,Bitcoin,Tendencia,Lateral,223
+BTC-USD,Bitcoin,Volatilidad,Volatilidad media,631
+BTC-USD,Bitcoin,Volatilidad,Baja volatilidad,317
+BTC-USD,Bitcoin,Volatilidad,Alta volatilidad,317
+SPY,S&P 500 ETF,Tendencia,Alcista,750
+SPY,S&P 500 ETF,Tendencia,Lateral,97
+SPY,S&P 500 ETF,Tendencia,Bajista,21
+SPY,S&P 500 ETF,Volatilidad,Volatilidad media,434
+SPY,S&P 500 ETF,Volatilidad,Alta volatilidad,217
+SPY,S&P 500 ETF,Volatilidad,Baja volatilidad,217
+QQQ,Nasdaq 100 ETF,Tendencia,Alcista,753
+QQQ,Nasdaq 100 ETF,Tendencia,Lateral,78
+QQQ,Nasdaq 100 ETF,Tendencia,Bajista,37
+QQQ,Nasdaq 100 ETF,Volatilidad,Volatilidad media,434
+QQQ,Nasdaq 100 ETF,Volatilidad,Alta volatilidad,217
+QQQ,Nasdaq 100 ETF,Volatilidad,Baja volatilidad,217
+AAPL,Apple,Tendencia,Alcista,625
+AAPL,Apple,Tendencia,Bajista,128
+AAPL,Apple,Tendencia,Lateral,115
+AAPL,Apple,Volatilidad,Volatilidad media,434
+AAPL,Apple,Volatilidad,Alta volatilidad,217
+AAPL,Apple,Volatilidad,Baja volatilidad,217
+PG,Procter & Gamble,Tendencia,Alcista,451
+PG,Procter & Gamble,Tendencia,Bajista,261
+PG,Procter & Gamble,Tendencia,Lateral,156
+PG,Procter & Gamble,Volatilidad,Volatilidad media,434
+PG,Procter & Gamble,Volatilidad,Baja volatilidad,217
+PG,Procter & Gamble,Volatilidad,Alta volatilidad,217
+GLD,Gold ETF,Tendencia,Alcista,780
+GLD,Gold ETF,Tendencia,Lateral,88
+GLD,Gold ETF,Volatilidad,Volatilidad media,434
+GLD,Gold ETF,Volatilidad,Baja volatilidad,217
+GLD,Gold ETF,Volatilidad,Alta volatilidad,217
+EURUSD=X,EUR/USD,Tendencia,Alcista,511
+EURUSD=X,EUR/USD,Tendencia,Lateral,212
+EURUSD=X,EUR/USD,Tendencia,Bajista,177
+EURUSD=X,EUR/USD,Volatilidad,Volatilidad media,450
+EURUSD=X,EUR/USD,Volatilidad,Alta volatilidad,225
+EURUSD=X,EUR/USD,Volatilidad,Baja volatilidad,225

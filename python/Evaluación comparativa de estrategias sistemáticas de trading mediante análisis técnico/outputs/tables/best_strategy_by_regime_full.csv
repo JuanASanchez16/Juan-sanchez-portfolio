@@ -1,0 +1,7 @@
+regime_type,regime,strategy,mean_total_return,mean_annualized_return,mean_sharpe,mean_max_drawdown,total_observations,n_assets
+Tendencia,Alcista,Buy and Hold,1.4362,0.3808,1.6337,-0.1272,4681,7
+Tendencia,Bajista,Buy and Hold,0.0069,0.3928,2.0185,-0.1382,855,7
+Tendencia,Lateral,EMA Long/Cash,0.0508,0.1765,1.1446,-0.0924,969,7
+Volatilidad,Alta volatilidad,Buy and Hold,0.2172,0.259,1.1129,-0.2058,1627,7
+Volatilidad,Baja volatilidad,Buy and Hold,0.1576,0.1865,1.6592,-0.1089,1627,7
+Volatilidad,Volatilidad media,Buy and Hold,0.586,0.2819,1.088,-0.1772,3251,7

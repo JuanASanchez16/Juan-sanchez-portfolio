@@ -1,0 +1,8 @@
+strategy,ticker,asset_name,final_equity,total_return,annualized_return,annualized_volatility,sharpe_ratio,max_drawdown,n_observations
+Buy and Hold,BTC-USD,Bitcoin,457.3909,3.5739,0.1969,0.6476,0.3041,-0.8153,3090
+Buy and Hold,SPY,S&P 500 ETF,315.3653,2.1537,0.1455,0.1923,0.7568,-0.3372,2126
+Buy and Hold,QQQ,Nasdaq 100 ETF,491.4322,3.9143,0.2072,0.2388,0.8677,-0.3512,2126
+Buy and Hold,AAPL,Apple,738.544,6.3854,0.2668,0.3041,0.8775,-0.3852,2126
+Buy and Hold,PG,Procter & Gamble,209.1222,1.0912,0.0912,0.2004,0.455,-0.2377,2126
+Buy and Hold,GLD,Gold ETF,310.1798,2.1018,0.1433,0.1681,0.8523,-0.2446,2126
+Buy and Hold,EURUSD=X,EUR/USD,95.5592,-0.0444,-0.0054,0.0728,-0.0736,-0.2329,2202

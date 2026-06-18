@@ -1,0 +1,8 @@
+ticker,asset_name,asset_class,rationale
+BTC-USD,Bitcoin,Criptomoneda,Activo digital con alta volatilidad y comportamiento tendencial en determinados periodos.
+SPY,S&P 500 ETF,Índice / ETF,Referencia amplia del mercado bursátil estadounidense.
+QQQ,Nasdaq 100 ETF,Índice / ETF tecnológico,Referencia del sector tecnológico y empresas de crecimiento.
+AAPL,Apple,Acción tecnológica,Acción individual de gran capitalización vinculada al sector tecnológico.
+PG,Procter & Gamble,Acción consumo defensivo,"Acción defensiva de consumo básico, menos cíclica que tecnología."
+GLD,Gold ETF,Materia prima / ETF,Activo refugio utilizado para diversificación frente a renta variable.
+EURUSD=X,EUR/USD,Divisa,"Mercado de divisas, útil para conectar con la práctica inicial de análisis técnico."

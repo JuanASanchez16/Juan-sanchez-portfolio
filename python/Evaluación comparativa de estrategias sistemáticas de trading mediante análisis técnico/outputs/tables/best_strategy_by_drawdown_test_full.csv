@@ -1,0 +1,8 @@
+strategy,period,ticker,asset_name,final_equity,total_return,annualized_return,annualized_volatility,sharpe_ratio,max_drawdown,n_observations
+EMA Long/Cash,Test,AAPL,Apple,156.6593,0.5666,0.1387,0.1824,0.7606,-0.2142,868
+EMA Long/Cash,Test,BTC-USD,Bitcoin,294.2755,1.9428,0.366,0.3646,1.004,-0.2761,1265
+EMA Long/Cash,Test,EURUSD=X,EUR/USD,102.8451,0.0285,0.0081,0.0578,0.1408,-0.0629,900
+ARIMA Long/Cash,Test,GLD,Gold ETF,197.1516,0.9715,0.2171,0.1945,1.116,-0.2446,868
+ARIMA Long/Cash,Test,PG,Procter & Gamble,109.1679,0.0917,0.0257,0.121,0.2124,-0.1176,868
+EMA Long/Cash,Test,QQQ,Nasdaq 100 ETF,209.4578,1.0946,0.2386,0.1645,1.4505,-0.1619,868
+ARIMA Long/Cash,Test,SPY,S&P 500 ETF,180.6383,0.8064,0.1867,0.1112,1.679,-0.0888,868

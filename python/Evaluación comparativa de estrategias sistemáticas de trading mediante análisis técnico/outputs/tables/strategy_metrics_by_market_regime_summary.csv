@@ -1,0 +1,19 @@
+regime_type,regime,strategy,mean_total_return,mean_sharpe,mean_max_drawdown,total_observations
+Tendencia,Alcista,ARIMA Long/Cash,0.976,1.3017,-0.1407,4681
+Tendencia,Alcista,Buy and Hold,1.4362,1.6337,-0.1272,4681
+Tendencia,Alcista,EMA Long/Cash,0.7457,1.0071,-0.1545,4681
+Tendencia,Bajista,ARIMA Long/Cash,0.0088,0.838,-0.0608,855
+Tendencia,Bajista,Buy and Hold,0.0069,2.0185,-0.1382,855
+Tendencia,Bajista,EMA Long/Cash,-0.0542,-2.3909,-0.0542,855
+Tendencia,Lateral,ARIMA Long/Cash,-0.0965,-0.9814,-0.1681,969
+Tendencia,Lateral,Buy and Hold,-0.0386,-0.1204,-0.2021,969
+Tendencia,Lateral,EMA Long/Cash,0.0508,1.1446,-0.0924,969
+Volatilidad,Alta volatilidad,ARIMA Long/Cash,0.0911,0.8649,-0.1756,1627
+Volatilidad,Alta volatilidad,Buy and Hold,0.2172,1.1129,-0.2058,1627
+Volatilidad,Alta volatilidad,EMA Long/Cash,0.0655,0.5249,-0.168,1627
+Volatilidad,Baja volatilidad,ARIMA Long/Cash,0.1509,1.4882,-0.0986,1627
+Volatilidad,Baja volatilidad,Buy and Hold,0.1576,1.6592,-0.1089,1627
+Volatilidad,Baja volatilidad,EMA Long/Cash,0.1414,1.6307,-0.0904,1627
+Volatilidad,Volatilidad media,ARIMA Long/Cash,0.3859,0.7855,-0.1585,3251
+Volatilidad,Volatilidad media,Buy and Hold,0.586,1.088,-0.1772,3251
+Volatilidad,Volatilidad media,EMA Long/Cash,0.4618,0.9026,-0.1443,3251

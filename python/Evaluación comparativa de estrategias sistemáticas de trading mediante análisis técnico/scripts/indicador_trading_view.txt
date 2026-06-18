@@ -1,0 +1,305 @@
+//@version=6
+indicator("Trend Risk Indicator - EMA RSI ADX ATR", overlay=true, max_labels_count=500)
+
+// ============================================================
+// INPUTS
+// ============================================================
+
+fastEmaLen = input.int(20, "EMA rápida")
+slowEmaLen = input.int(50, "EMA lenta")
+
+rsiLen = input.int(14, "RSI periodo")
+rsiEntry = input.float(55, "RSI entrada")
+rsiExit = input.float(45, "RSI salida")
+
+adxLen = input.int(14, "ADX periodo")
+adxSmooth = input.int(14, "ADX suavizado")
+adxMin = input.float(22, "ADX mínimo")
+
+atrLen = input.int(14, "ATR periodo")
+atrStopMult = input.float(2.5, "ATR stop inicial")
+atrTrailMult = input.float(3.0, "ATR trailing")
+
+maxDistanceFromEma = input.float(3.5, "Máxima distancia sobre EMA rápida (%)") / 100
+
+// ============================================================
+// MACRO TREND
+// ============================================================
+
+macroLen = input.int(1000, "EMA macro")
+macroSlopeLookback = input.int(50, "Velas pendiente macro")
+macroSlopeThreshold = input.float(0.8, "Umbral pendiente macro (%)") / 100
+
+// ============================================================
+// INDICADORES
+// ============================================================
+
+emaFast = ta.ema(close, fastEmaLen)
+emaSlow = ta.ema(close, slowEmaLen)
+
+emaSlowSlope = emaSlow - emaSlow[5]
+
+rsi = ta.rsi(close, rsiLen)
+
+[plusDI, minusDI, adx] = ta.dmi(adxLen, adxSmooth)
+
+atr = ta.atr(atrLen)
+
+priceExtension = close / emaFast - 1
+
+// ============================================================
+// SISTEMA DE RÉGIMEN MACRO
+// ============================================================
+
+macroEma = ta.ema(close, macroLen)
+
+macroSlopePct = (macroEma / macroEma[macroSlopeLookback]) - 1
+
+macroBull = macroSlopePct > macroSlopeThreshold
+macroBear = macroSlopePct < -macroSlopeThreshold
+macroSideways = not macroBull and not macroBear
+
+// ============================================================
+// CONDICIONES DE ENTRADA
+// ============================================================
+
+trendOk = emaFast > emaSlow and emaSlowSlope > 0
+momentumOk = rsi > rsiEntry
+adxOk = adx > adxMin
+notExtended = priceExtension < maxDistanceFromEma
+
+entrySignal = trendOk and momentumOk and adxOk and notExtended
+
+// ============================================================
+// ESTADO DE POSICIÓN
+// ============================================================
+
+var bool inPosition = false
+var int exposure = 0
+
+var float entryPrice = na
+var float highestPrice = na
+
+var float initialStop = na
+var float trailingStop = na
+
+var string lastExitReason = ""
+var string lastEntryType = ""
+
+buySignal = false
+exitSignal = false
+exitReason = ""
+
+// ============================================================
+// ENTRADA
+// ============================================================
+
+if not inPosition and entrySignal
+
+    inPosition := true
+
+    entryPrice := close
+    highestPrice := close
+
+    initialStop := close - atrStopMult * atr
+    trailingStop := close - atrTrailMult * atr
+
+    // Clasificación visual de la entrada según el régimen macro.
+    // No ejecuta apalancamiento real; solo clasifica la calidad relativa de la señal.
+    if macroBull
+        exposure := 3
+        lastEntryType := "ENTRADA FUERTE"
+    else if macroSideways
+        exposure := 1
+        lastEntryType := "ENTRADA MODERADA"
+    else
+        exposure := 1
+        lastEntryType := "CONTRA RÉGIMEN"
+
+    buySignal := true
+
+// ============================================================
+// GESTIÓN DE POSICIÓN
+// ============================================================
+
+if inPosition
+
+    highestPrice := math.max(highestPrice, close)
+
+    trailingStop := math.max(trailingStop, highestPrice - atrTrailMult * atr)
+
+    // Salidas evaluadas a cierre de vela.
+    atrStopHit = close <= initialStop
+    trailingStopHit = close <= trailingStop
+    emaExit = emaFast < emaSlow
+    rsiExitHit = rsi < rsiExit
+
+    if atrStopHit or trailingStopHit or emaExit or rsiExitHit
+
+        exitSignal := true
+
+        exitReason := atrStopHit ? "STOP ATR" : trailingStopHit ? "TRAILING ATR" : emaExit ? "CRUCE EMA" : "PÉRDIDA RSI"
+        lastExitReason := exitReason
+
+        inPosition := false
+        exposure := 0
+
+        entryPrice := na
+        highestPrice := na
+
+        initialStop := na
+        trailingStop := na
+
+// ============================================================
+// PLOTS PRINCIPALES
+// ============================================================
+
+plot(emaFast, "EMA rápida", color=color.blue, linewidth=2)
+plot(emaSlow, "EMA lenta", color=color.orange, linewidth=2)
+plot(macroEma, "EMA macro", color=color.purple, linewidth=3)
+
+plot(inPosition ? initialStop : na, "Stop ATR inicial", color=color.red, linewidth=2, style=plot.style_linebr)
+plot(inPosition ? trailingStop : na, "Trailing ATR", color=color.yellow, linewidth=2, style=plot.style_linebr)
+
+// ============================================================
+// ETIQUETAS DE ENTRADA Y SALIDA
+// ============================================================
+
+plotshape(
+     buySignal and macroBull,
+     title="Entrada fuerte",
+     text="ENTRADA\nFUERTE",
+     style=shape.labelup,
+     location=location.belowbar,
+     color=color.green,
+     textcolor=color.black,
+     size=size.normal
+)
+
+plotshape(
+     buySignal and macroSideways,
+     title="Entrada moderada",
+     text="ENTRADA\nMODERADA",
+     style=shape.labelup,
+     location=location.belowbar,
+     color=color.yellow,
+     textcolor=color.black,
+     size=size.normal
+)
+
+plotshape(
+     buySignal and macroBear,
+     title="Entrada contra régimen",
+     text="CONTRA\nRÉGIMEN",
+     style=shape.labelup,
+     location=location.belowbar,
+     color=color.orange,
+     textcolor=color.black,
+     size=size.normal
+)
+
+plotshape(
+     exitSignal,
+     title="Salida",
+     text="SALIDA",
+     style=shape.labeldown,
+     location=location.abovebar,
+     color=color.red,
+     textcolor=color.white,
+     size=size.normal
+)
+
+// ============================================================
+// FONDO SEGÚN RÉGIMEN MACRO
+// ============================================================
+
+bgColor = macroBull ? color.new(color.green, 88) : macroBear ? color.new(color.red, 88) : color.new(color.yellow, 88)
+
+bgcolor(bgColor)
+
+// ============================================================
+// PANEL INFORMATIVO
+// ============================================================
+
+string statusText = "SIN POSICIÓN"
+
+if inPosition and exposure == 3
+    statusText := "POSICIÓN FUERTE"
+else if inPosition and exposure == 1
+    statusText := "POSICIÓN MODERADA"
+else if inPosition
+    statusText := "EN POSICIÓN"
+else if entrySignal
+    statusText := "SEÑAL ACTIVA"
+else
+    statusText := "SIN POSICIÓN"
+
+statusColor = inPosition ? exposure == 3 ? color.green : color.yellow : entrySignal ? color.lime : color.red
+
+macroText = macroBull ? "ALCISTA" : macroBear ? "BAJISTA" : "LATERAL"
+
+macroColor = macroBull ? color.green : macroBear ? color.red : color.yellow
+
+entryQuality = entrySignal and macroBull ? "CONTEXTO FAVORABLE" : entrySignal and macroSideways ? "CONTEXTO NEUTRAL" : entrySignal and macroBear ? "CONTRA RÉGIMEN" : "-"
+
+var table panel = table.new(position.top_right, 2, 10, border_width=1)
+
+if barstate.islast
+
+    table.cell(panel, 0, 0, "Estado", bgcolor=color.black, text_color=color.white)
+    table.cell(panel, 1, 0, statusText, bgcolor=statusColor, text_color=color.white)
+
+    table.cell(panel, 0, 1, "Régimen macro", bgcolor=color.black, text_color=color.white)
+    table.cell(panel, 1, 1, macroText, bgcolor=macroColor, text_color=color.black)
+
+    table.cell(panel, 0, 2, "Calidad señal", bgcolor=color.black, text_color=color.white)
+    table.cell(panel, 1, 2, entryQuality, bgcolor=entrySignal ? macroColor : color.gray, text_color=color.black)
+
+    table.cell(panel, 0, 3, "Última entrada", bgcolor=color.black, text_color=color.white)
+    table.cell(panel, 1, 3, lastEntryType == "" ? "-" : lastEntryType, bgcolor=color.gray, text_color=color.white)
+
+    table.cell(panel, 0, 4, "Tendencia", bgcolor=color.black, text_color=color.white)
+    table.cell(panel, 1, 4, trendOk ? "OK" : "NO", bgcolor=trendOk ? color.green : color.red, text_color=color.white)
+
+    table.cell(panel, 0, 5, "RSI", bgcolor=color.black, text_color=color.white)
+    table.cell(panel, 1, 5, str.tostring(rsi, "#.##"), bgcolor=momentumOk ? color.green : color.red, text_color=color.white)
+
+    table.cell(panel, 0, 6, "ADX", bgcolor=color.black, text_color=color.white)
+    table.cell(panel, 1, 6, str.tostring(adx, "#.##"), bgcolor=adxOk ? color.green : color.red, text_color=color.white)
+
+    table.cell(panel, 0, 7, "Distancia EMA rápida", bgcolor=color.black, text_color=color.white)
+    table.cell(panel, 1, 7, str.tostring(priceExtension * 100, "#.##") + "%", bgcolor=notExtended ? color.green : color.red, text_color=color.white)
+
+    table.cell(panel, 0, 8, "Pendiente EMA macro", bgcolor=color.black, text_color=color.white)
+    table.cell(panel, 1, 8, str.tostring(macroSlopePct * 100, "#.##") + "%", bgcolor=macroColor, text_color=color.black)
+
+    table.cell(panel, 0, 9, "Última salida", bgcolor=color.black, text_color=color.white)
+    table.cell(panel, 1, 9, lastExitReason == "" ? "-" : lastExitReason, bgcolor=exitSignal ? color.red : color.gray, text_color=color.white)
+
+// ============================================================
+// ALERTAS
+// ============================================================
+
+alertcondition(
+     buySignal and macroBull,
+     title="Entrada fuerte",
+     message="Trend Risk Indicator: entrada fuerte en contexto macro favorable"
+)
+
+alertcondition(
+     buySignal and macroSideways,
+     title="Entrada moderada",
+     message="Trend Risk Indicator: entrada moderada en contexto neutral"
+)
+
+alertcondition(
+     buySignal and macroBear,
+     title="Entrada contra régimen",
+     message="Trend Risk Indicator: entrada técnica contra el régimen macro"
+)
+
+alertcondition(
+     exitSignal,
+     title="Salida",
+     message="Trend Risk Indicator: señal de salida"
+)
